@@ -8,7 +8,7 @@
  * @version       1.0.0
  *
  * @wordpress-plugin
- * Plugin Name:   FCF PAY Payment Gateway
+ * Plugin Name:   FCFPAY Payment Gateway
  * Plugin URI:    https://fcfpay.com/
  * Description:   Making cryptocurrency payments easy!
  * Version:       1.0.0

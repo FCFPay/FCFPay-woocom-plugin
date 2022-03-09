@@ -43,7 +43,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * @return	void
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'fcf-pay-payment-gateway' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'fcfpay-payment-gateway' ), '1.0.0' );
 		}
 
 		/**
@@ -54,7 +54,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * @return	void
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'fcf-pay-payment-gateway' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'fcfpay-payment-gateway' ), '1.0.0' );
 		}
 
 		/**
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * @return  void
 		 */
 		public function load_textdomain() {
-			load_plugin_textdomain( 'fcf-pay-payment-gateway', FALSE, dirname( plugin_basename( FCFPAY_PLUGIN_FILE ) ) . '/languages/' );
+			load_plugin_textdomain( 'fcfpay-payment-gateway', FALSE, dirname( plugin_basename( FCFPAY_PLUGIN_FILE ) ) . '/languages/' );
 		}
 
 	}
