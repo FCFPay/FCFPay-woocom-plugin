@@ -128,6 +128,39 @@ class Fcf_Pay_Endpoints{
      * @throws Exception
      */
     public function order_status($request){
+
+        $payload = array(
+            "unique_id" => $request['data']["unique_id"]
+        );
+
+        $ssl = false;
+
+        if (is_ssl()) {
+            $ssl = true;
+        }
+
+        $response = wp_remote_post(FCFPAY_API_URL . 'check-source', array(
+            'method' => 'POST',
+            'body' => http_build_query($payload),
+            'timeout' => 90,
+            'sslverify' => $ssl,
+        ));
+
+        if (is_wp_error($response)) {
+            throw new Exception(__('We are currently experiencing problems trying to connect to this payment gateway. Sorry for the inconvenience.', 'fcf_pay'));
+        }
+
+        if (empty($response['body'])) {
+            throw new Exception(__('Response was empty.', 'fcf_pay'));
+        }
+
+        $response_body = wp_remote_retrieve_body($response);
+        $response_data = json_decode($response_body, true);
+
+        if (!$response_data['success']) {
+            return new WP_Error( 'not_found', 'Unique id does\'nt exists.', array('status' => 404) );
+        }
+
         $amount = $request['data']["deposited_amount"] / pow(10, $request['data']["decimal"]);
         $order_id = $request['data']["order_id"];
         $deposited = $request['data']["deposited"];
