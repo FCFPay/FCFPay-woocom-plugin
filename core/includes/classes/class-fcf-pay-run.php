@@ -60,7 +60,7 @@ class Fcf_Pay_Run
      */
     public function add_plugin_action_link($links)
     {
-        $links['fcf_settings'] = sprintf('<a href="%s" title="Settings">%s</a>', admin_url('admin.php?page=wc-settings&tab=checkout&section=fcf_pay'), __('Settings', 'fcf-pay'));
+        $links['fcf_settings'] = sprintf('<a href="%s" title="Settings">%s</a>', admin_url('admin.php?page=wc-settings&tab=checkout&section=fcf_pay'), __('Settings', 'fcf-pay-payment-gateway'));
 
         return $links;
     }
@@ -157,7 +157,7 @@ class Fcf_Pay_Run
             __('Crypto type', 'fcf_pay') => 'fcf_pay_deposited_currency'
         ];
 
-        echo '<h2>' . __('Order extra info', 'fcf-pay') . '</h2>';
+        echo '<h2>' . __('Order extra info', 'fcf-pay-payment-gateway') . '</h2>';
         echo '<table><tbody>';
 
         foreach( $labels as $label => $meta ){
@@ -187,7 +187,7 @@ class Fcf_Pay_Run
         wp_enqueue_style('fcfpay-backend-styles', FCFPAY_PLUGIN_URL . 'core/includes/assets/css/backend-styles.css', array(), FCFPAY_VERSION, 'all');
         wp_enqueue_script('fcfpay-backend-scripts', FCFPAY_PLUGIN_URL . 'core/includes/assets/js/backend-scripts.js', array('jquery'), FCFPAY_VERSION, true);
         wp_localize_script('fcfpay-backend-scripts', 'fcfpay', array(
-            'plugin_name' => __(FCFPAY_NAME, 'fcf-pay'),
+            'plugin_name' => __(FCFPAY_NAME, 'fcf-pay-payment-gateway'),
             'ajaxurl' => admin_url('admin-ajax.php'),
             'security_nonce' => wp_create_nonce("fcf-pay-nonce"),
         ));
