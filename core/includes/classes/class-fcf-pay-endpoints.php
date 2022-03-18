@@ -200,10 +200,13 @@ class Fcf_Pay_Endpoints{
             $status = 'processing';
         }
 
+        $deposited_status = $status == 'completed' ? 'Completed' : 'Pending';
+
         $order->update_status($status);
         wc_update_order_item_meta($order_id, 'fcf_pay_deposited_amount', $amount);
         wc_update_order_item_meta($order_id, 'fcf_pay_deposited_currency', $currency);
         wc_update_order_item_meta($order_id, 'fcf_pay_deposited_amount_in_usd', $deposited_amount);
+        wc_update_order_item_meta($order_id, 'fcf_pay_deposited_status', $deposited_status);
         $response = new WP_REST_Response(
             array(
                 'success' => true,

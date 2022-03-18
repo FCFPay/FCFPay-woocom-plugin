@@ -40,12 +40,22 @@ class Fcf_Pay_Run
         add_action('plugin_action_links_' . FCFPAY_PLUGIN_BASE, array($this, 'add_plugin_action_link'), 20);
         add_shortcode('fcf_pay_order', array($this, 'fcf_pay_order_shortcode'));
         add_action('woocommerce_thankyou', array($this, 'fcf_pay_order_received_table'), 10, 2 );
+        add_action('woocommerce_order_item_get_formatted_meta_data', array($this, 'fcf_pay_unset_specific_order_item_meta_data'), 10, 2 );
         add_action('admin_enqueue_scripts', array($this, 'enqueue_backend_scripts_and_styles'), 20);
         add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_scripts_and_styles'), 20);
         add_filter('woocommerce_get_settings_products', array($this, 'wc_custom_settings_tab_content'), 20, 2);
         register_activation_hook(FCFPAY_PLUGIN_FILE, array($this, 'activation_hook_callback'));
         register_deactivation_hook(FCFPAY_PLUGIN_FILE, array($this, 'deactivation_hook_callback'));
 
+    }
+
+    function fcf_pay_unset_specific_order_item_meta_data($formatted_meta, $item){
+
+        foreach( $formatted_meta as $key => $meta ){
+            if( in_array( $meta->key, array('fcf_pay_deposited_amount', 'fcf_pay_deposited_currency', 'fcf_pay_deposited_amount_in_usd') ) )
+                unset($formatted_meta[$key]);
+        }
+        return $formatted_meta;
     }
 
     /**
@@ -154,7 +164,8 @@ class Fcf_Pay_Run
     public function fcf_pay_order_received_table( $order_id ) {
         $labels = [
             __('Deposited amount', 'fcf_pay') => 'fcf_pay_deposited_amount',
-            __('Crypto type', 'fcf_pay') => 'fcf_pay_deposited_currency'
+            __('Crypto type', 'fcf_pay') => 'fcf_pay_deposited_currency',
+            __('Status', 'fcf_pay') => 'fcf_pay_deposited_status'
         ];
 
         echo '<h2>' . __('Order extra info', 'fcfpay-payment-gateway') . '</h2>';
@@ -165,8 +176,8 @@ class Fcf_Pay_Run
                 $deposited_amount = FCFPAY()->helpers->decimal_notation(wc_get_order_item_meta( $order_id, $meta ));
                 echo '<tr><th>'.esc_html($label).':</th><td>'.esc_html($deposited_amount).'</td></tr>';
             }else{
-                $crypto_type = wc_get_order_item_meta( $order_id, $meta );
-                echo '<tr><th>'.esc_html($label).':</th><td>'.esc_html($crypto_type).'</td></tr>';
+                $value = wc_get_order_item_meta( $order_id, $meta );
+                echo '<tr><th>'.esc_html($label).':</th><td>'.esc_html($value).'</td></tr>';
             }
         }
 
