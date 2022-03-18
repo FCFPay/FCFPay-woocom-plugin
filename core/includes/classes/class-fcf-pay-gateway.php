@@ -47,7 +47,7 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
         // The title to be used for the vertical tabs that can be ordered top to bottom
         $this->title = $this->get_option('title') !== '' ? $this->get_option('title') : __("FCF PAY payment gateway", 'fcf_pay');
 
-        $this->description = $this->get_option('description') !== '' ? $this->get_option('description') : __("FCF PAY payment gateway", 'fcf_pay');
+        $this->description = __("<a href='https://frenchconnection.finance/' target='_blank' style='text-decoration:none'>Easy cryptocurrency payments</a>", 'fcf_pay');
 
         // Bool. Can be set to true if you want payment fields to show on the checkout
         $this->has_fields = true;
@@ -89,17 +89,6 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
     // Build the administration fields for this specific Gateway
     public function init_form_fields()
     {
-        $this->instance_form_fields = array(
-
-            'title' => array(
-                'title' => __( 'Ritiro in Negozio', 'pickupinstore' ),
-                'type' => 'text',
-                'description' => __( 'Store Address', 'pickupinstore' ),
-                'default' => __( '197, Brooklyn Road', 'New York' ),
-                'desc_tip'    => true,
-            ),
-        );
-
         $this->form_fields = array(
             'enabled' => array(
                 'title' => __('Enable / Disable', 'fcf_pay'),
@@ -112,13 +101,6 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
                 'type' => 'text',
                 'desc_tip' => __('Payment title the customer will see during the checkout process.', 'fcf_pay'),
                 'default' => __('FCF PAY', 'fcf_pay'),
-            ),
-            'description' => array(
-                'title' => __('Description', 'fcf_pay'),
-                'type' => 'textarea',
-                'desc_tip' => __('Payment description the customer will see during the checkout process.', 'fcf_pay'),
-                'default' => __('Pay securely using crypto coins.', 'fcf_pay'),
-                'css' => 'max-width:350px;'
             ),
             'api_key' => array(
                 'title' => __('API key *', 'fcf_pay'),
