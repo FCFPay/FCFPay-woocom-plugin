@@ -5,7 +5,7 @@
  * @package       FCFPAY
  * @author        The FCF Inc
  * @license       gplv3
- * @version       1.0.0
+ * @version       1.0.1
  *
  * @wordpress-plugin
  * Plugin Name:   FCFPAY Payment Gateway
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'FCFPAY_NAME',			'FCF-Pay' );
 
 // Plugin version
-define( 'FCFPAY_VERSION',		'1.0.0' );
+define( 'FCFPAY_VERSION',		'1.0.1' );
 
 // Plugin Root File
 define( 'FCFPAY_PLUGIN_FILE',	__FILE__ );
