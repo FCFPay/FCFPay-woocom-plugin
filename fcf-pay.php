@@ -11,7 +11,7 @@
  * Plugin Name:   FCFPAY Payment Gateway
  * Plugin URI:    https://fcfpay.com/
  * Description:   Making cryptocurrency payments easy!
- * Version:       1.0.0
+ * Version:       1.0.1
  * Author:        The FCF Inc
  * Author URI:    https://frenchconnection.finance/
  * Text Domain:   fcf-pay
