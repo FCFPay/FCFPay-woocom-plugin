@@ -2,7 +2,7 @@
 Frontend related CSS
 ------------------*/
 
-.payment_method_fcf_pay p a {
+.payment_method_fcf_pay p a, .payment_method_fcf_pay p a:hover {
     background-color: #000;
     color: #fff;
     text-decoration: none;
