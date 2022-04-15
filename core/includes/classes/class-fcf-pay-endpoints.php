@@ -139,7 +139,7 @@ class Fcf_Pay_Endpoints{
             $ssl = true;
         }
 
-        $response = wp_remote_post(FCFPAY_API_URL . 'check-source', array(
+        $response = wp_remote_post(get_option('woocommerce_fcf_pay_settings')['environment_url'] . '/check-source', array(
             'method' => 'POST',
             'body' => http_build_query($payload),
             'timeout' => 90,
