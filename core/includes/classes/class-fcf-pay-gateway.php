@@ -47,7 +47,7 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
         // The title to be used for the vertical tabs that can be ordered top to bottom
         $this->title = $this->get_option('title') !== '' ? $this->get_option('title') : __("FCF PAY payment gateway", 'fcf_pay');
 
-        $this->description = __("<a href='https://fcfpay.com/' target='_blank'>Easy cryptocurrency payments</a>", 'fcf_pay');
+        $this->description = __("Easy cryptocurrency payments", 'fcf_pay');
 
         // Bool. Can be set to true if you want payment fields to show on the checkout
         $this->has_fields = true;
