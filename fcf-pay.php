@@ -5,13 +5,13 @@
  * @package       FCFPAY
  * @author        The FCF Inc
  * @license       gplv3
- * @version       1.0.5
+ * @version       1.0.6
  *
  * @wordpress-plugin
  * Plugin Name:   FCFPAY Payment Gateway
  * Plugin URI:    https://fcfpay.com/
  * Description:   Making cryptocurrency payments easy!
- * Version:       1.0.5
+ * Version:       1.0.6
  * Author:        The FCF Inc
  * Author URI:    https://frenchconnection.finance/
  * Text Domain:   fcf-pay
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'FCFPAY_NAME',			'FCF-Pay' );
 
 // Plugin version
-define( 'FCFPAY_VERSION',		'1.0.5' );
+define( 'FCFPAY_VERSION',		'1.0.6' );
 
 // Plugin Root File
 define( 'FCFPAY_PLUGIN_FILE',	__FILE__ );
@@ -57,28 +57,29 @@ require_once FCFPAY_PLUGIN_DIR . 'core/class-fcf-pay.php';
  * of our master class.
  *
  * @author   The FCF Inc
- * @since   1.0.5
+ * @since   1.0.6
  * @return  object|Fcf_Pay
  */
 function FCFPAY() {
 	return Fcf_Pay::instance();
 }
-FCFPAY();
 
 add_action('plugins_loaded', 'fcf_pay_init');
 function fcf_pay_init()
 {
-    include_once('core/includes/classes/class-fcf-pay-gateway.php');
+    if(class_exists( 'WooCommerce' )){
+        FCFPAY();
+        include_once('core/includes/classes/class-fcf-pay-gateway.php');
 
-    add_filter('woocommerce_payment_gateways', 'add_fcf_pay_gateway');
+        add_filter('woocommerce_payment_gateways', 'add_fcf_pay_gateway');
 
-    /**
-     * Add the gateway
-     **/
-    function add_fcf_pay_gateway($methods)
-    {
-        $methods[] = Fcf_Pay_Gateway::class;
-        return $methods;
+        /**
+         * Add the gateway
+         **/
+        function add_fcf_pay_gateway($methods)
+        {
+            $methods[] = Fcf_Pay_Gateway::class;
+            return $methods;
+        }
     }
-
 }
