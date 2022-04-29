@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @package		FCFPAY
  * @subpackage	Classes/Fcf_Pay_Gateway
  * @author		 The FCF Inc
- * @since		1.0.0
+ * @since		1.0.7
  */
 
 class Fcf_Pay_Gateway extends WC_Payment_Gateway
