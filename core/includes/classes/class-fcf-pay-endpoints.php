@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @package		FCFPAY
  * @subpackage	Classes/Fcf_Pay_Settings
  * @author		 The FCF Inc
- * @since		1.0.8
+ * @since		1.1.0
  */
 class Fcf_Pay_Endpoints{
 
@@ -38,7 +38,7 @@ class Fcf_Pay_Endpoints{
 	 * Namespace
 	 *
 	 * @var		string
-	 * @since   1.0.8
+	 * @since   1.1.0
 	 */
     private $namespace = 'fcf-pay/v1';
 
@@ -46,7 +46,7 @@ class Fcf_Pay_Endpoints{
      * Amount percent
      *
      * @var		integer
-     * @since   1.0.8
+     * @since   1.1.0
      */
     private $amount_percent;
 
@@ -54,7 +54,7 @@ class Fcf_Pay_Endpoints{
      * Max amount
      *
      * @var		integer
-     * @since   1.0.8
+     * @since   1.1.0
      */
     private $max_amount;
 
@@ -62,7 +62,7 @@ class Fcf_Pay_Endpoints{
 	 * Our Fcf_Pay_Settings constructor 
 	 * to run the plugin logic.
 	 *
-	 * @since 1.0.8
+	 * @since 1.1.0
 	 */
     /**
      * WC_FCF_PAY_Api_Endpoints constructor.

@@ -10,7 +10,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 	 *
 	 * @package		FCFPAY
 	 * @subpackage	Classes/Fcf_Pay
-	 * @since		1.0.8
+	 * @since		1.1.0
 	 * @author		 The FCF Inc
 	 */
 	final class Fcf_Pay {
@@ -19,7 +19,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * The real instance
 		 *
 		 * @access	private
-		 * @since	1.0.8
+		 * @since	1.1.0
 		 * @var		object|Fcf_Pay
 		 */
 		private static $instance;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * FCFPAY helpers object.
 		 *
 		 * @access	public
-		 * @since	1.0.8
+		 * @since	1.1.0
 		 * @var		object|Fcf_Pay_Helpers
 		 */
 		public $helpers;
@@ -39,22 +39,22 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * Cloning instances of the class is forbidden.
 		 *
 		 * @access	public
-		 * @since	1.0.8
+		 * @since	1.1.0
 		 * @return	void
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'fcfpay-payment-gateway' ), '1.0.8' );
+			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'fcfpay-payment-gateway' ), '1.1.0' );
 		}
 
 		/**
 		 * Disable unserializing of the class.
 		 *
 		 * @access	public
-		 * @since	1.0.8
+		 * @since	1.1.0
 		 * @return	void
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'fcfpay-payment-gateway' ), '1.0.8' );
+			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'fcfpay-payment-gateway' ), '1.1.0' );
 		}
 
 		/**
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * time. Also prevents needing to define globals all over the place.
 		 *
 		 * @access		public
-		 * @since		1.0.8
+		 * @since		1.1.0
 		 * @static
 		 * @return		object|Fcf_Pay	The one true Fcf_Pay
 		 */
@@ -94,7 +94,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * Include required files.
 		 *
 		 * @access  private
-		 * @since   1.0.8
+		 * @since   1.1.0
 		 * @return  void
 		 */
 		private function includes() {
@@ -111,7 +111,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * Add base hooks for the core functionality
 		 *
 		 * @access  private
-		 * @since   1.0.8
+		 * @since   1.1.0
 		 * @return  void
 		 */
 		private function base_hooks() {
@@ -122,7 +122,7 @@ if ( ! class_exists( 'Fcf_Pay' ) ) :
 		 * Loads the plugin language files.
 		 *
 		 * @access  public
-		 * @since   1.0.8
+		 * @since   1.1.0
 		 * @return  void
 		 */
 		public function load_textdomain() {

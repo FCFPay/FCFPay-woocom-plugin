@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @package		FCFPAY
  * @subpackage	Classes/Fcf_Pay_Helpers
  * @author		 The FCF Inc
- * @since		1.0.8
+ * @since		1.1.0
  */
 class Fcf_Pay_Helpers{
 
@@ -52,9 +52,13 @@ class Fcf_Pay_Helpers{
         );
         if (!empty($orders)) {
             $ids = [];
+            $current = new DateTime();
             foreach ($orders as $order) {
-                if ($order->get_payment_method() == 'fcf_pay') {
-                    $ids[] = $order->get_id();
+                $id = $order->get_id();
+                $date = $order->get_date_created()->modify('+3 day');
+                $update_status = get_post_meta($id , 'disable_update_status', true);
+                if ($order->get_payment_method() == 'fcf_pay' && $date->getTimestamp() > $current->getTimestamp() && $update_status !== '1') {
+                    $ids[] = $id;
                 }
             }
 
@@ -65,7 +69,7 @@ class Fcf_Pay_Helpers{
                 'method' => 'POST',
                 'headers' => array(
                     'Authorization' => 'Bearer ' . $this->api_key,
-                    'content-type' => 'application/json'
+                    'content-type' => 'applica          tion/json'
                 ),
                 'body' => $payload,
                 'timeout' => 90,

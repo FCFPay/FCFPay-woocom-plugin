@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) exit;
  * @package        FCFPAY
  * @subpackage    Classes/Fcf_Pay_Run
  * @author         The FCF Inc
- * @since        1.0.8
+ * @since        1.1.0
  */
 class Fcf_Pay_Run
 {
@@ -20,7 +20,7 @@ class Fcf_Pay_Run
      * Our Fcf_Pay_Run constructor
      * to run the plugin logic.
      *
-     * @since 1.0.8
+     * @since 1.1.0
      */
     function __construct()
     {
@@ -32,7 +32,7 @@ class Fcf_Pay_Run
      *
      * @access    private
      * @return    void
-     * @since    1.0.8
+     * @since    1.1.0
      */
     private function add_hooks()
     {
@@ -65,7 +65,7 @@ class Fcf_Pay_Run
      * @param array $links An array of plugin action links.
      *
      * @return    array    An array of plugin action links.
-     * @since    1.0.8
+     * @since    1.1.0
      *
      */
     public function add_plugin_action_link($links)
@@ -81,7 +81,7 @@ class Fcf_Pay_Run
      * @access    public
      * @return    string    The customized content by the shortcode.
      * @throws Exception
-     * @since    1.0.8
+     * @since    1.1.0
      */
     public function fcf_pay_order_shortcode()
     {
@@ -159,7 +159,7 @@ class Fcf_Pay_Run
      * @access    public
      * @return    string    Order received table content.
      * @throws Exception
-     * @since    1.0.8
+     * @since    1.1.0
      */
     public function fcf_pay_order_received_table( $order_id ) {
         $labels = [
@@ -190,7 +190,7 @@ class Fcf_Pay_Run
      *
      * @access    public
      * @return    void
-     * @since    1.0.8
+     * @since    1.1.0
      *
      */
     public function enqueue_backend_scripts_and_styles()
@@ -210,7 +210,7 @@ class Fcf_Pay_Run
      *
      * @access    public
      * @return    void
-     * @since    1.0.8
+     * @since    1.1.0
      *
      */
     public function enqueue_frontend_scripts_and_styles()
@@ -228,7 +228,7 @@ class Fcf_Pay_Run
      * This function is called on activation of the plugin
      *
      * @access	public
-     * @since	1.0.8
+     * @since	1.1.0
      *
      * @return	void
      */
@@ -241,7 +241,7 @@ class Fcf_Pay_Run
      * This function is called on deactivation of the plugin
      *
      * @access	public
-     * @since	1.0.8
+     * @since	1.1.0
      *
      * @return	void
      */
