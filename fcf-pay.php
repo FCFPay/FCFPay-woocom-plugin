@@ -45,7 +45,7 @@ define( 'FCFPAY_PLUGIN_DIR',	plugin_dir_path( FCFPAY_PLUGIN_FILE ) );
 define( 'FCFPAY_PLUGIN_URL',	plugin_dir_url( FCFPAY_PLUGIN_FILE ) );
 
 // Plugin API Url
-define( 'FCFPAY_API_URL',       'https://dev-merchant.mysite.am/api/v1/' );
+define( 'FCFPAY_API_URL',       'https://dev-merchant.mysite.am/api/v2/' );
 
 /**
  * Load the main class for the core functionality

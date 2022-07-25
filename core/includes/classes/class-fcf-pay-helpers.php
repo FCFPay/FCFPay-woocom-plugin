@@ -69,7 +69,7 @@ class Fcf_Pay_Helpers{
                 'method' => 'POST',
                 'headers' => array(
                     'Authorization' => 'Bearer ' . $this->api_key,
-                    'content-type' => 'applica          tion/json'
+                    'content-type' => 'application/json'
                 ),
                 'body' => $payload,
                 'timeout' => 90,
@@ -92,13 +92,13 @@ class Fcf_Pay_Helpers{
             }
 
             foreach ($response_data['data'] as $check_order) {
-                $dep_amount = $check_order["amount"] != '' ? $check_order["amount"] : 0;
-                $decimal = $check_order["decimal"] != '' ? $check_order["decimal"] : 0;
+                $dep_amount = $check_order['txs'][0]["amount"] != '' ? $check_order['txs'][0]["amount"] : 0;
+                $decimal = $check_order['txs'][0]["decimal"] != '' ? $check_order['txs'][0]["decimal"] : 0;
                 $amount = $dep_amount / pow(10, $decimal);
                 $order_id = $check_order["order_id"];
-                $deposited = $check_order["deposited"];
-                $currency = $check_order["currency"];
-                $deposited_amount = $check_order["fiat_amount"];
+                $deposited = $check_order['txs'][0]["deposited"];
+                $currency = $check_order['txs'][0]["currency"];
+                $deposited_amount = $check_order["total_fiat_amount"];
                 $order = wc_get_order($order_id);
 
                 if (!empty($order)) {
