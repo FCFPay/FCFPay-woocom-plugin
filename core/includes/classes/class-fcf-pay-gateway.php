@@ -29,6 +29,8 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
 
     public $max_amount;
 
+    public $send_items;
+
     /**
      * WC_FCF_PAY constructor.
      */
@@ -68,6 +70,9 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
 
         // Amount percent for order confirmation
         $this->amount_percent = $this->settings['amount_percent'];
+
+        // Allow to send items list to FCF Pay
+        $this->send_items = $this->settings['send_items'];
 
         // Maximum percent amount for order confirmation
         $this->max_amount = $this->settings['max_amount'];
@@ -111,7 +116,7 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
                 'title' => __('API url', 'fcf_pay'),
                 'type' => 'text',
                 'desc_tip' => __('You can get the URL from your FCF account dashboard.', 'fcf_pay'),
-                'default' => 'https://merchant.fcfpay.com/api/v1'
+                'default' => 'https://merchant.fcfpay.com/api/v2'
             ),
             'amount_percent' => array(
                 'title' => __('Percent', 'fcf_pay'),
@@ -129,6 +134,12 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
                 'title' => __('Redirect URL', 'fcf_pay'),
                 'type' => 'text',
                 'desc_tip' => __('URL to redirect the shopper after a successful transaction', 'fcf_pay'),
+            ),
+            'send_items' => array(
+                'title' => __('Send items list to FCFPay', 'fcf_pay'),
+                'type' => 'checkbox',
+                'default' => 'no',
+                'desc_tip' => __('When enabled, the plugin will send item description, quantity, price, total information and it will be shown on the checkout page', 'fcf_pay'),
             ),
         );
     }
@@ -153,7 +164,7 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
         ];
 
         $query_params = http_build_query($data);
-        $environment_url = ($this->environment_url != '') ?$this->environment_url . '/create-order?' . $query_params : 'https://merchant.fcfpay.com/api/v1/create-order?' . $query_params;
+        $environment_url = ($this->environment_url != '') ?$this->environment_url . '/create-order?' . $query_params : 'https://merchant.fcfpay.com/api/v2/create-order?' . $query_params;
 
         $currency_name = $customer_order->get_currency();
         $currency_code = $this->currency_code($currency_name);
@@ -167,6 +178,31 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
             "order_date" => date('Y-m-d'),
             "redirect_url" => ($this->redirect_url) ? $this->redirect_url . '?order_id='. $order_id . '&key=' . $customer_order->get_order_key() : $this->notify_url. $order_id .'/?key='.$customer_order->get_order_key() ,
         );
+
+        // Check if send_items is equal to 'no'
+        if ( $this->send_items === 'no' ) {   
+            // Do nothing
+
+        } else {
+            
+            // Add the items to the order details array
+            $items = array();
+            $i = 1;
+            foreach ( $customer_order->get_items() as $item_id => $item ) {
+                $product = $item->get_product();
+                $items[$i] = array(
+                    'Item Name' => $item->get_name(),
+                    'Quantity' => $item->get_quantity(),
+                    'Price' => $item->get_total() / $item->get_quantity(),
+                    'Total' => $item->get_total(),
+                );
+                $i++;
+                // Add items to payload
+                $payload['items'] = $items;
+            }
+            
+        }
+
         $ssl = false;
 
         if (is_ssl()) {
