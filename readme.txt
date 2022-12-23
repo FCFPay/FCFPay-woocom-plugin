@@ -46,3 +46,6 @@ Furthermore, when you make a purchase through FCF Pay, your purchase history wil
 
 = 1.1.0: February 17, 2022 =
 * Birthday of FCF-Pay
+= 1.1.1: December 23, 2022 =
+* Updated API endpoins
+* Added the feature to send order items information to the checkout page

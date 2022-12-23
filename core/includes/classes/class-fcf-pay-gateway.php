@@ -136,7 +136,7 @@ class Fcf_Pay_Gateway extends WC_Payment_Gateway
                 'desc_tip' => __('URL to redirect the shopper after a successful transaction', 'fcf_pay'),
             ),
             'send_items' => array(
-                'title' => __('Send items list to FCFPay', 'fcf_pay'),
+                'title' => __('Send items list to FCF Pay checkout page', 'fcf_pay'),
                 'type' => 'checkbox',
                 'default' => 'no',
                 'desc_tip' => __('When enabled, the plugin will send item description, quantity, price, total information and it will be shown on the checkout page', 'fcf_pay'),
