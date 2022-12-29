@@ -7,7 +7,7 @@ Tags: Crypto payemt, Payment, Gateway, FCFpay, cryptocurrrency payemt
 Requires at least: 5.0.0
 Tested up to: 5.9
 Requires PHP: ^7.3
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,8 +44,9 @@ Furthermore, when you make a purchase through FCF Pay, your purchase history wil
 
 == Changelog ==
 
-= 1.1.0: February 17, 2022 =
+= 1.1.1: February 17, 2022 =
 * Birthday of FCF-Pay
-= 1.1.1: December 23, 2022 =
+
+= 1.1.2: December 23, 2022 =
 * Updated API endpoins
 * Added the feature to send order items information to the checkout page
