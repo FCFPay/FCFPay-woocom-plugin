@@ -5,13 +5,13 @@
  * @package       FCFPAY
  * @author        The FCF Inc
  * @license       gplv3
- * @version       1.1.0
+ * @version       1.1.1
  *
  * @wordpress-plugin
  * Plugin Name:   FCFPAY Payment Gateway
  * Plugin URI:    https://fcfpay.com/
  * Description:   Making cryptocurrency payments easy!
- * Version:       1.1.0
+ * Version:       1.1.1
  * Author:        The FCF Inc
  * Author URI:    https://frenchconnection.finance/
  * Text Domain:   fcf-pay
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'FCFPAY_NAME',			'FCF-Pay' );
 
 // Plugin version
-define( 'FCFPAY_VERSION',		'1.1.0' );
+define( 'FCFPAY_VERSION',		'1.1.1' );
 
 // Plugin Root File
 define( 'FCFPAY_PLUGIN_FILE',	__FILE__ );
